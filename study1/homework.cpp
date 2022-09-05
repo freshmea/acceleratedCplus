@@ -7,7 +7,8 @@ int main()
 {
     string word;
     vector<string> words;
-    vector<int> wlenths;
+//    vector<int> wlenths;
+    vector<std::basic_string<char>::size_type> wlenths;
     while(cin >> word){
         for(auto c: word){
             if (c == '.'){
@@ -30,9 +31,9 @@ int main()
         wlenths.push_back(word.size());
     }
     vector<int> maxi;
-    int max = 0;
+    std::basic_string<char>::size_type max = 0;
     vector<int> mini;
-    int min = 10;
+    std::basic_string<char>::size_type min = 10;
     for(int i=0;i<words.size();i++)
     {
         if(max < wlenths[i]) {
