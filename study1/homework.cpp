@@ -16,6 +16,15 @@ int main()
             if (c == ','){
                 word.erase(word.find(','));
             }
+            if (c == '!'){
+                word.erase(word.find('!'));
+            }
+            if (c == '\''){
+                word.erase(word.find('\''));
+            }
+//            if (c == '\"'){
+//                word.erase(word.find('\"'));
+//            }
         }
         words.push_back(word);
         wlenths.push_back(word.size());
