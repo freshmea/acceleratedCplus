@@ -18,7 +18,7 @@ static std::istream& read_hw(std::istream& in, std::vector<double>& homeworks)
     return in;
 }
 
- std::istream& read(std::istream& in, Student_info& s){
+std::istream& read(std::istream& in, Student_info& s){
     in >> s.name >> s.midterm >> s. finalterm;
 
     ::read_hw(in, s.homeworks);
