@@ -12,6 +12,23 @@ int main()
     vector<int> wcounts;
     int cnt=0;
     while(cin >> word){
+        for(int i=0;i<word.size();i++) {
+            if (word[i] == '.') {
+                word.erase(word.find('.'));
+            }
+            if (word[i] == ',') {
+                word.erase(word.find(','));
+            }
+            if (word[i] == '!') {
+                word.erase(word.find('!'));
+            }
+            if (word[i] == '\'') {
+                word.erase(word.find('\''));
+            }
+            if (word[i] == '\"') {
+                word.erase(word.find('\"'));
+            }
+        }
         words.push_back(word);
     }
     sort(words.begin(), words.end());
@@ -26,7 +43,7 @@ int main()
     }
     cout << "size of swords : " << swords.size() << endl;
     cout << "size of wcounts : " << wcounts.size() << endl;
-    for(int i=0;i<words.size();i++){
+    for(int i=0;i<swords.size();i++){
         cout << swords[i] << " : " << wcounts[i] << endl;
     }
 
