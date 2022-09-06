@@ -6,6 +6,13 @@
 #include <stdexcept>
 using namespace std;
 
+struct Student_info{
+    string name;
+    double midterm{};
+    double finalterm{};
+    vector<double> homeworks;
+};
+
 istream& read_hw(istream& in, vector<double>& homeworks)
 {
     if(in) {
@@ -21,6 +28,13 @@ istream& read_hw(istream& in, vector<double>& homeworks)
     return in;
 }
 
+istream& read(istream& in, Student_info& s){
+    in >> s.name >> s.midterm >> s. finalterm;
+
+    ::read_hw(in, s.homeworks);
+    return in;
+}
+
 double median(const vector<double>& v) {
     if(v.empty()){
         throw domain_error("vector is empty");
@@ -32,7 +46,7 @@ double median(const vector<double>& v) {
 }
 
 double grade(double midterm, double finalterm, double median){
-    return  0.211111 * midterm +0.4* finalterm + 0.4 * median;
+    return  0.2 * midterm +0.4* finalterm + 0.4 * median;
 }
 
 double grade(double midterm, double finalterm, const vector<double>& hws) {
@@ -43,24 +57,29 @@ double grade(double midterm, double finalterm, const vector<double>& hws) {
     return ::grade(midterm, finalterm, homework);
 }
 
+double grade(const Student_info& s){
+    return ::grade(s.midterm, s.finalterm, s.homeworks);
+}
+
 int main()
 {
-    string name;
-    cin >> name;
+    vector<Student_info> students;
 
-    double midterm, finalterm;
-    cin >> midterm >> finalterm;
-
-    vector<double> homeworks;
-    ::read_hw(cin, homeworks);
-    try {
-        double finalScore = ::grade(midterm, finalterm, homeworks);
-
-        auto prec = cout.precision();   // std::streamsize
-        cout << std::setprecision(5) << "finalScore is : " << finalScore << std::setprecision(prec) << endl;
-    } catch (domain_error& e){
-        std::cerr << e.what() << endl;
-        return 1;
+    Student_info student;
+    while(read(cin, student)){
+        students.push_back(student);
     }
+
+    for (auto &student: students)
+        try {
+            double finalScore = ::grade(student);
+            auto prec = cout.precision();   // std::streamsize
+            cout << student.name << " : " << std::setprecision(5) << finalScore << std::setprecision(prec) << endl;
+        } catch (domain_error &e) {
+            std::cerr << e.what() << endl;
+            return 1;
+        }
+
+
     return 0;
 }
