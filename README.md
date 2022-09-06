@@ -33,3 +33,7 @@ openssl 을 설치해야함... 그지 같네..
 * auto 키워드에 대한 활용. 범위지정 포문을 쓸 때 안쪽에서 iterator 를 쓰면 
 범위가 넘치는 오류가 날 수 도 있다. 
 * argument parameter 차이 
+* 여러명의 학생 성적을 입력 받아서 처리.
+* 분할 컴파일 score4 파일을 median 과 student_info 로 나누어 컴파일.
+* 구조체 자료 안에 연산자 중복으로 algorithm 의 sort 사용. 
+* algorithm 의 max 사용.
