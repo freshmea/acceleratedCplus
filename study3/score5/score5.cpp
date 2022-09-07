@@ -7,7 +7,8 @@
 #include <algorithm>
 #include "student_info.h"
 using namespace std;
-bool fgrade(Student_info s)
+
+double fgrade(Student_info s)
 {
     return s.grade;
 }
@@ -24,7 +25,7 @@ bool fgrade(Student_info s)
 //}
 
 void extract_fails(vector<Student_info>& pass, vector<Student_info>& fail) {
-    for(vector<Student_info>::size_type i = 0; i != pass.size();++i){
+    for(vector<Student_info>::size_type i = 0; i != pass.size();i++){
         if(fgrade(pass[i]) < 60) {
             fail.push_back(pass[i]);
             pass.erase(pass.begin() + i);
@@ -32,19 +33,28 @@ void extract_fails(vector<Student_info>& pass, vector<Student_info>& fail) {
         }
     }
 }
+//void extract_fails(vector<Student_info>& pass, vector<Student_info>& fail) {
+//    for(vector<Student_info>::iterator i = pass.begin(); i != pass.end();++i){
+//        if(fgrade(*i) < 60) {
+//            fail.push_back(*i);
+//            i = pass.erase(i);      // erase 는 지운 다음 위치를 반환 한다.
+//        }
+//    }
+//}
 
 int main()
 {
     vector<Student_info> students;
     Student_info student;
 
-    vector<Student_info> passList= students;
-    vector<Student_info> failList;
-    ::extract_fails(passList, failList);
-
     while(read(cin, student)){
         students.push_back(student);
     }
+
+    vector<Student_info> passList= students;
+    vector<Student_info> failList;
+
+    ::extract_fails(passList, failList);
 
     for (vector<Student_info>::size_type i = 0; i != students.size(); ++i){
         cout << students[i].name << " : " << students[i].grade << endl;
@@ -55,5 +65,6 @@ int main()
     }
     auto it2 =students.begin();
     cout << (*it2).name;
+
     return 0;
 }
