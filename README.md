@@ -37,3 +37,8 @@ openssl 을 설치해야함... 그지 같네..
 * 분할 컴파일 score4 파일을 median 과 student_info 로 나누어 컴파일.
 * 구조체 자료 안에 연산자 중복으로 algorithm 의 sort 사용. 
 * algorithm 의 max 사용.
+- - -
+## Study3
+- - -
+* 과제 ex4_6 
+* 컨테이너 학습. 일관된 아키텍쳐를 사용. iterator.

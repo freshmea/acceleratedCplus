@@ -22,3 +22,4 @@ add_executable(study2_score4 study2/ex4_6/score4.cpp study2/ex4_6/median.cpp stu
 add_executable(study2_ex4_7 study2/ex4_7.cpp)
 add_executable(study2_ex4_6_score4 study2/ex4_6/score4.cpp study2/ex4_6/student_info.cpp study2/ex4_6/median.cpp)
 add_executable(study2_ex4_5 study2/ex4_5.cpp)
+add_executable(study3_score5_score5 study3/score5/score5.cpp study3/score5/student_info.cpp study3/score5/median.cpp)

@@ -23,7 +23,7 @@ int main()
         try {
             int pad = maxLen - students[i].name.size() + 1;
             auto prec = cout.precision();   // std::streamsize
-            cout << students[i].name << string(pad, ' ') << " : " << std::setprecision(5) << students[i].sum << std::setprecision(prec) << endl;
+            cout << students[i].name << string(pad, ' ') << " : " << std::setprecision(5) << students[i].grade << std::setprecision(prec) << endl;
         } catch (domain_error &e) {
             std::cerr << e.what() << endl;
             return 1;
