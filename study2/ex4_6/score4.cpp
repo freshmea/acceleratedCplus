@@ -18,6 +18,7 @@ int main()
     }
 
     sort(students.begin(), students.end());
+
     for (int i=0;i<students.size();i++) {
         try {
             int pad = maxLen - students[i].name.size() + 1;

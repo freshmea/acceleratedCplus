@@ -4,11 +4,7 @@
 #include <vector>
 struct Student_info{
     std::string name;
-    double midterm{};
-    double finalterm{};
     double sum;
-    std::vector<double> homeworks;
-
     bool operator<(const Student_info& rhs) const;
 };
 

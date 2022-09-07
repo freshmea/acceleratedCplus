@@ -1,29 +1,25 @@
 #include <iostream>
+#include <vector>
 #include "student_info.h"
 #include "median.h"
 
-static std::istream& read_hw(std::istream& in, Student_info& s)
-{
-    if(in) {
-        s.homeworks.clear();
-        double homework;
-        while (in >> homework) {
-            s.homeworks.push_back(homework);
-        }
-        in.clear();
-    }
-    return in;
-}
-
  std::istream& read(std::istream& in, Student_info& s){
     s.sum =0;
-    in >> s.name >> s.midterm >> s.finalterm;
-    s.sum += s.midterm*0.2+s.finalterm*0.4;
-    ::read_hw(in, s);
-    if(s.homeworks.empty()){
-        throw std::domain_error("homework vector is empty");
-    }
-    s.sum += 0.4*::median(s.homeworks);
+    int midterm;
+    int finalterm;
+    in >> s.name >> midterm >> finalterm;
+    s.sum += midterm*0.2+finalterm*0.4;
+    std::vector<double> homeworks;
+
+    if(in) {
+        homeworks.clear();
+        double homework;
+        while (in >> homework) {
+            homeworks.push_back(homework);
+        }
+        in.clear();
+    } else return in;
+    s.sum += 0.4*::median(homeworks);
     return in;
 }
 
