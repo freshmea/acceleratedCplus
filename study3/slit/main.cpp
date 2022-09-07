@@ -20,6 +20,7 @@ vector<string> split(const string& s){
         }
         if (i != j){
             words.push_back(string(s.substr(i, j-i)));
+            i = j;
         }
     }
     return words;
@@ -47,16 +48,53 @@ vector<string> frame(const vector<string> words){
     return frameWords;
 }
 
+vector<string> vcat(const vector<string>& top, const vector<string>& bottom)
+{
+    vector<string> result = top;
+
+    for(vector<string>::const_iterator it = bottom.cbegin(); it != bottom.cend(); ++it){
+        result.push_back(*it);
+    }
+
+    return result;
+}
+
+vector<string> hcat(const vector<string>& left, const vector<string>& right)
+{
+    vector<string> result;
+
+    vector<string>::size_type i =0;
+    vector<string>::size_type j =0;
+
+    string::size_type pad = ::width(left);
+
+    while( i != left.size() || j != right.size()){
+        string s;
+        if (i != left.size()){
+            s = left[i];
+            ++i;
+        }
+        s += string(pad - s.size(), ' ');
+
+        if ( j != right.size()){
+            s += right[j];
+            ++j;
+        }
+        result.push_back(s);
+    }
+    return result;
+}
 int main()
 {
     string s;
-    vector<string> words;
     while (std::getline(cin, s)){
-        cout << s;
-        words = ::split(s);
-        words = frame(words);
-        for(auto i: words)
-            cout << i << endl;
+        vector<string> words = ::split(s);
+        vector<string> frameWords = frame(words);
+
+//        words = vcat(words, frameWords);
+        words = hcat(words, frameWords);
+        for(const auto & word : words)
+            cout << word <<endl;
     }
     return 0;
 }
