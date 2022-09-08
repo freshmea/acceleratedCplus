@@ -32,7 +32,7 @@ int main()
     cout << "vec.size() : ";
     cout << vec.size() << endl;
 
-    for(int i=0;i != 5; ++i){
+    for(int i=0;i != 10; ++i){
         vec.push_back(nums[i]);
         vec.shrink_to_fit();
         cout << "vec.capacity() : ";
@@ -108,6 +108,20 @@ int main()
     cout << "vec transform square  : ";
     for(auto i : vec2){
         cout << i << " ";
+    }
+    cout << endl;
+
+    //if ( vec == vec2);
+    //if (nums == vec) ??? 안됨.
+    if(equal(nums, nums+10, vec.cbegin())){
+        cout << "nums and vec is equal. have a same element";
+    } else{
+        cout << " nums and vec is not equal. have a different element";
+    }
+    cout << endl;
+    cout << "reverse vec:";
+    for(vector<int>::const_reverse_iterator it = vec.crbegin(); it != vec.crend(); ++it){
+        cout << *it << " ";
     }
     cout << endl;
     return 0;

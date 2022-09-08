@@ -50,3 +50,4 @@ openssl 을 설치해야함... 그지 같네..
   * capacity, reserve, shrink_to_fit
   * remove, remove_if, erase
   * remove_copy, accumulate, transform
+  * crbegin() crend() reverse iterator 사용.
