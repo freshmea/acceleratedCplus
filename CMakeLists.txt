@@ -26,3 +26,4 @@ add_executable(study3_score5_score5 study3/score5/score5.cpp study3/score5/stude
 add_executable(study3_score6_score6 study3/score6/score6.cpp study3/score6/student_info.cpp study3/score6/median.cpp)
 add_executable(study3_slit_main study3/split/main.cpp)
 add_executable(study4_vcatCopy study4/vcatCopy.cpp)
+add_executable(study4_algorithm study4/algorithm.cpp)

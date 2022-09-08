@@ -59,6 +59,7 @@ vector<string> vcat(const vector<string>& top, const vector<string>& bottom)
     return result;
 }
 
+
 vector<string> hcat(const vector<string>& left, const vector<string>& right)
 {
     vector<string> result;
