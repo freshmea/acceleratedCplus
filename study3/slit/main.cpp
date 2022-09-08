@@ -52,8 +52,8 @@ vector<string> vcat(const vector<string>& top, const vector<string>& bottom)
 {
     vector<string> result = top;
 
-    for(vector<string>::const_iterator it = bottom.cbegin(); it != bottom.cend(); ++it){
-        result.push_back(*it);
+    for(const auto & it : bottom){
+        result.push_back(it);
     }
 
     return result;
@@ -84,15 +84,27 @@ vector<string> hcat(const vector<string>& left, const vector<string>& right)
     }
     return result;
 }
+
+vector<string> center(const vector<string>& words){
+    vector<string> frameWords;
+
+    string::size_type maxLen = width(words);
+
+    for(vector<string>::const_iterator it = words.cbegin(); it != words.cend(); ++it){
+        frameWords.push_back(string((maxLen - it->size())/2, ' ') + *it + string((maxLen- it->size())/2, ' '));
+    }
+    return frameWords;
+}
 int main()
 {
     string s;
     while (std::getline(cin, s)){
         vector<string> words = ::split(s);
-        vector<string> frameWords = frame(words);
+//        vector<string> frameWords = frame(words);
 
 //        words = vcat(words, frameWords);
-        words = hcat(words, frameWords);
+//        words = hcat(words, frameWords);
+        words = center(words);
         for(const auto & word : words)
             cout << word <<endl;
     }
