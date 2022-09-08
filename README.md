@@ -45,4 +45,8 @@ openssl 을 설치해야함... 그지 같네..
 - - -
 ## Study4
 - - -
-* center 함수 추가. 
+* center 함수 추가. study3  split 파일
+* algorithm numeric 함수 공부.
+  * capacity, reserve, shrink_to_fit
+  * remove, remove_if, erase
+  * remove_copy, accumulate, transform

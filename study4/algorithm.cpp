@@ -8,6 +8,11 @@ using namespace std;
 bool f(vector<int>::value_type value){
     return value == 6;
 }
+
+vector<int>::value_type square(vector<int>::value_type value){
+    return value * value;
+}
+
 int main()
 {
     int nums[] = {1, 2, 3, 4, 5, 6, 7, 8, 6, 10};
@@ -15,9 +20,10 @@ int main()
 
     copy(nums, nums+10, nums2);
 
-    for(int i =0;i<5; ++i){
-        cout << nums2[i] << endl;
-    }
+    cout << "copy result nums2 : ";
+    for(int i =0;i<5; ++i)
+        cout << nums2[i] << " ";
+    cout << endl;
 
     vector<int> vec;
     vec.reserve(100);
@@ -38,9 +44,10 @@ int main()
 
 
     vector<int> vec2(nums, nums+10);
-    for(auto const& i : vec2){
-        cout << i << endl;
-    }
+    cout << "vec2 : ";
+    for(auto const& i : vec2)
+        cout << i << " ";
+    cout << endl;
 
     cout << " vec2 : ";
     for(vector<int>::const_iterator it = vec2.cbegin();it!= vec2.cend(); ++it)
@@ -96,5 +103,12 @@ int main()
 
     int sum = accumulate(vec2.cbegin(), vec2.cend(), 0);
     cout << "sum : " << sum << endl;
+
+    transform(vec.cbegin(), vec.cend(), back_inserter(vec2), square);
+    cout << "vec transform square  : ";
+    for(auto i : vec2){
+        cout << i << " ";
+    }
+    cout << endl;
     return 0;
 }
