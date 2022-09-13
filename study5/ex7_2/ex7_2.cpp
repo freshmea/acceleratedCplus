@@ -11,17 +11,8 @@ using namespace std;
 
 char fgrade(Student_info s)
 {
-    if( s.grade >= 90){
-        return 'A';
-    } else if( s.grade >= 80){
-        return 'B';
-    } else if( s.grade >= 70){
-        return 'C';
-    } else if( s.grade >= 60){
-        return 'D';
-    } else {
-        return 'F';
-    }
+    char grades[] = {'F', 'F', 'F', 'F', 'F', 'F', 'D', 'C', 'B', 'A', 'A'};
+    return grades[static_cast<int>(s.grade/10)];
 }
 
 int main()
