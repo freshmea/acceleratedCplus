@@ -30,9 +30,19 @@ int main()
     for(auto & sMember : students){
         gradeMap[sMember.fgrade()].push_back(sMember);
     }
-
+    int lineCount = 0;
     for (auto & sMember : students){
-        cout << string(maxLen +1 -sMember.name().size(), ' ') <<sMember.name() << " : " << sMember.grade() << endl;
+        streamsize prec = cout.precision();
+        cout << string(maxLen +1 -sMember.name().size(), ' ') <<sMember.name() << " : ";
+
+        string s;
+        char buf[6];
+        sprintf(buf, "%.2f", sMember.grade());
+        s = buf;
+
+        cout << setprecision(4) << s << setprecision(prec)<<'\t';
+        ++lineCount;
+        if (!(lineCount%5)) cout << endl;
     }
 
     for(auto const & itGradeMap : gradeMap){
@@ -42,5 +52,12 @@ int main()
         cout << endl;
     }
 
+    for (auto & sMember : students){
+        streamsize prec = cout.precision();
+        cout << string(maxLen +1 -sMember.name().size(), ' ') <<sMember.name() << " : ";
+        cout << setprecision(4) << sMember.finalGrade() << setprecision(prec)<<'\t';
+        ++lineCount;
+        if (!(lineCount%5)) cout << endl;
+    }
     return 0;
 }
