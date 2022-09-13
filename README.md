@@ -51,3 +51,9 @@ openssl 을 설치해야함... 그지 같네..
   * remove, remove_if, erase
   * remove_copy, accumulate, transform
   * crbegin() crend() reverse iterator 사용.
+- - -
+## Study5
+- - - 
+* 연관 컨테이너 복습 map 사용. pair
+* 학생 성적 프로그램을 class 로 변경. 
+* 
