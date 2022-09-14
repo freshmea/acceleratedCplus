@@ -1,56 +1,71 @@
-//
-// Created by aa on 22. 9. 14.
-//
-
 #ifndef ACCELERATEDCPLUS_ALGORITHM2_H
 #define ACCELERATEDCPLUS_ALGORITHM2_H
-#include <iterator>
+namespace aiot {
 
-template <typename T>
-bool equal2(T b, T e, T d)
-{
-    if (b == e )
-        return true;
-    if(*b != *d)
-        return false;
-    ++b;
-    ++d;
-    return equal2(b, e, d);
+template<typename T>
+bool equal(T b, T e, T d) {
+    while (b != e) {
+        if (*b++ != *d++)
+            return false;
+    }
+    return true;
 }
 
-template <typename T, typename X >
-T find2(T b, T e, const X& d)
-{
+template<typename T, typename X>
+T find(T b, T e, const X &d) {
     if (b == e || *b == d)
         return b;
     ++b;
-    return find2(b, e, d);
+    return aiot::find(b, e, d);
 }
 
-template <typename T, typename F>
-T find_if2(T b, T e,F f)
-{
-    if (f(*b))
-        return b;
-    ++b;
-    return find_if2(b, e, f);
+//template<typename T, typename F>
+//T find_if(T b, T e, F f) {
+//    if (f(*b))
+//        return b;
+//    ++b;
+//    return aiot::find_if(b, e, f);
+//}
+
+template<typename T, typename F>
+T find_if(T b, T e, bool (*func)(const F& val)) {
+    while( b != e) {
+        if (func(*b))
+            return b;
+        ++b;
+    }
+    return b;
 }
 
-template <typename I, typename O>
-O copy2(I b, I e,O d)
-{
-    while( b != e)
+template<typename I, typename O>
+O copy(I b, I e, O d) {
+    while (b != e)
         *d++ = *b++;
     return d;
 }
 
 template<typename T, typename D, typename F>
-D transform2(T b, T e,D d, F f)
-{
-    while(b == e) {
-        *d++=f(*b);
+D transform(T b, T e, D d, F f) {
+    while (b == e) {
+        *d++ = f(*b);
         ++b;
     }
     return d;
 }
+
+template<typename T, typename T2>
+T remove(T b, T e, const T2& val) {
+    T result = b;
+    while ( b != e){
+        if(!(*b == val)){
+            if(b != result)
+                *result = *b;
+            ++result;
+        }
+        ++b;
+    }
+    return result;
+}
+
+};
 #endif //ACCELERATEDCPLUS_ALGORITHM2_H

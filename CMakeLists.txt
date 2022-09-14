@@ -37,3 +37,5 @@ add_executable(study5_ex9_5_ex9_5 study5/ex9_5/ex9_5.cpp study5/ex9_5/student_in
 add_executable(study6_ex9_5 study6/ex9_5/ex9_5.cpp study6/ex9_5/student_info_p.cpp study6/ex9_5/Grader.cpp study6/ex9_5/Grader.h)
 add_executable(study6_median_median study6/median/median.cpp)
 add_executable(study6_iterator study6/iterator.cpp)
+add_executable(study6_algorithm study6/algorithm.cpp)
+add_executable(study6_Vec_main study6/Vec/main.cpp)
