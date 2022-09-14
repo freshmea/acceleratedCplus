@@ -63,3 +63,5 @@ openssl 을 설치해야함... 그지 같네..
 * ex9_5 풀이. Grader class 를 이용해서 다시 작성. 
 * Generic Fuction 제너릭 함수의 구현. 반복자. 
 * median 함수를 템플릿 함수로 만듬. 
+* vector template class 를 직접 만듬. 
+* allocator 활용.
