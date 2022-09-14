@@ -5,7 +5,7 @@
 #ifndef ACCELERATEDCPLUS_GRADER_H
 #define ACCELERATEDCPLUS_GRADER_H
 #include <vector>
-#iunclude <iostream>
+#include <iostream>
 #include "student_info_p.h"
 
 class Grader {

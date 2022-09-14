@@ -30,5 +30,5 @@ double Student_info_p::grade() const{
 
 bool Student_info_p::isPass() const
 {
-    return true;
+    return grade() >= 60;
 }

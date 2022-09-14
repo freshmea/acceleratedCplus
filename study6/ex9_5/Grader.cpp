@@ -1,7 +1,3 @@
-//
-// Created by aa on 22. 9. 14.
-//
-
 #include "Grader.h"
 #include <algorithm>
 #include <string>
