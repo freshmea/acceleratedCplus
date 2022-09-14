@@ -57,3 +57,8 @@ openssl 을 설치해야함... 그지 같네..
 * 연관 컨테이너 복습 map 사용. pair
 * 학생 성적 프로그램을 class 로 변경. 
 * ex9_5 pass fail 을 가리는 프로그램. 
+- - -
+## Study6
+- - -
+* ex9_5 풀이. Grader class 를 이용해서 다시 작성. 
+* 
