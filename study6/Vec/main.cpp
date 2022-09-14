@@ -6,7 +6,7 @@
 
 int main()
 {
-    Vec v1;
-    Vec v2(100);
+    Vec<int> v1;
+    Vec<int> v2(100);
     return 0;
 }
