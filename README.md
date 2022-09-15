@@ -73,3 +73,4 @@ openssl 을 설치해야함... 그지 같네..
   allocator 를 쓰는게 좋다. 
 * clear 와 erase 함수 추가 erase 함수는 주어진 범위를 지우는 함수.
 * str 클래스 만들기.
+* 상속 활용해서 대학원생 class Grad 추가 score 함수 다시 만들기.  
