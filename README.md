@@ -65,3 +65,11 @@ openssl 을 설치해야함... 그지 같네..
 * median 함수를 템플릿 함수로 만듬. 
 * vector template class 를 직접 만듬. 
 * allocator 활용.
+- - -
+## Study7
+- - -
+* Vector 템플릿 함수를 allocator 없이 new 와 delete 로 작성하기.  
+  -- T 의 생성자가 정의 되어 있지 않으면 작동 하지 않는다. 어쨋든 
+  allocator 를 쓰는게 좋다. 
+* clear 와 erase 함수 추가 erase 함수는 주어진 범위를 지우는 함수.
+* str 클래스 만들기.
