@@ -37,28 +37,27 @@ private:
     T* avail;
     T* limit;
     std::allocator<T> alloc;
-    T** pData;
 
     void create();
     void create(size_type n, const T& value);
     void create(const_iterator begin, const_iterator end);
+
     void uncreate();
 
+    void grow();
+    void unchecked_append(const T& rhs);
 };
 
 template<typename T>
 Vec<T>::Vec()
 {
-    data = new T[0];
-    avail = limit = data;
+    create();
 }
 
 template<typename T>
 Vec<T>::Vec(int size, const T& value)
 {
-    data = new T[size];
-    limit = avail = data + size;
-    std::fill(data, limit, value);
+    create(size, value);
 }
 
 template<typename T>
@@ -86,15 +85,9 @@ Vec<T>& Vec<T>::operator=(const Vec<T>& rhs)
 template <typename T>
 void Vec<T>::push_back(const T& val)
 {
-    if (avail == limit){
-        size_type len = std::max(2*(limit-data), difference_type(1));
-        iterator b = new T[len];
-        avail = std::copy(data, avail, b);
-        delete [] data;
-        data = b;
-        limit = data +len;
-    }
-    *avail++ = val;
+    if (avail == limit)
+        grow();
+    unchecked_append(val);
 }
 
 template<typename T>
@@ -112,10 +105,25 @@ void Vec<T>::clear()
 {
     uncreate();
 }
+
+template <typename T>
+void Vec<T>::create()
+{
+    data = avail = limit = 0;
+}
+
+template<typename T>
+void Vec<T>::create(size_type size, const T& value)
+{
+    data = alloc.allocate(size);
+    limit = avail = data + size;
+    std::uninitialized_fill(data, data+size, value);
+}
+
 template<typename T>
 void Vec<T>::create(const_iterator begin, const_iterator end)
 {
-    data = new T[end - begin];
+    data = alloc.allocate(end - begin);
     limit = avail = std::uninitialized_copy(begin, end, data);
 }
 
@@ -123,10 +131,34 @@ template<typename T>
 void Vec<T>::uncreate()
 {
     if (data ){
-        delete [] data;
+        iterator it = avail;
+        while (it != data){
+            alloc.destroy(it);
+            --it;
+        }
+        alloc.deallocate(data, limit - data);
     }
 
     data = avail = limit = 0;
 }
 
+template <typename T>
+void Vec<T>::grow()
+{
+    size_type len = std::max(2*(limit - data), difference_type(1));
+
+    iterator b = alloc.allocate(len);
+    iterator e = std::uninitialized_copy(data, avail, b);
+    uncreate();
+    data = b;
+    avail = e;
+    limit = b + len;
+}
+
+template <typename T>
+void Vec<T>::unchecked_append(const T &rhs)
+{
+    alloc.construct(avail, rhs);
+    ++avail;
+}
 #endif //ACCELERATEDCPLUS_VEC_H
