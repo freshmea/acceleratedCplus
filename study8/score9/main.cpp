@@ -6,20 +6,22 @@
 #include <algorithm>
 #include "Core.h"
 #include "Grad.h"
+#include "Handle.h"
 
 using std::cin;
 using std::vector;
 using std::cout;
 using std::endl;
 
-bool compare_core_ptr(Core *p1, Core *p2)
+bool compare_handle_ptr(const Handle<Core>& h1, const Handle<Core>& h2)
 {
-    return p1->name() < p2->name();
+    return h1->name() < h2->name();
 }
 
 int main()
 {
-    vector<Core*> pStudents;
+
+    vector<Handle<Core> > pStudents;
 
     Core *pCore;
     char ch;
@@ -33,7 +35,7 @@ int main()
         pStudents.push_back(pCore);
     }
 
-    std::sort(pStudents.begin(), pStudents.end(), compare_core_ptr);
+    std::sort(pStudents.begin(), pStudents.end(), compare_handle_ptr);
 
 //    for(auto i : pStudents){
 //        cout << i->name() << " : " << i->grade() << endl;
@@ -46,10 +48,6 @@ int main()
             std::cerr << e.what() << endl;
             return 1;
         }
-    }
-
-    for (auto it= pStudents.begin(); it !=pStudents.end(); ++it){
-        delete *it;
     }
 
     return 0;

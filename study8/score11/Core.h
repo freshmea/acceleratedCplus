@@ -16,8 +16,9 @@ public:
     virtual ~Core() {}
 
     virtual std::istream& read(std::istream& in);
-    virtual double grade() const;
 
+    virtual Core * clone() const;
+    virtual double grade() const;
     std::string name() const{return name_;}
 protected:
     double midterm, finalterm;

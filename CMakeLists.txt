@@ -42,3 +42,8 @@ add_executable(study6_Vec_main study6/Vec/main.cpp)
 add_executable(study7_Vec_main study7/Vec2/main.cpp)
 add_executable(study7_str_main study7/str/main.cpp study7/str/Str.cpp)
 add_executable(study7_score7_main study7/score7/main.cpp study7/score7/Core.cpp study7/score7/median.cpp study7/score7/Grad.cpp)
+add_executable(study8_score8_main study8/score8/score8.cpp study8/score8/Core.cpp study8/score8/Grad.cpp study8/score8/median.cpp study8/score8/student_info.cpp)
+add_executable(study8_score9_main study8/score9/main.cpp study8/score9/Core.cpp study8/score9/Grad.cpp study8/score9/Handle.h study8/score9/median.cpp)
+
+add_executable(study8_score10_main study8/score10/main.cpp study8/score10/Core.cpp study8/score10/Grad.cpp study8/score10/median.cpp study8/score10/student_info.cpp)
+add_executable(study8_score11_main study8/score11/main.cpp study8/score11/Core.cpp study8/score11/Grad.cpp study8/score11/median.cpp study8/score11/student_info.cpp)
